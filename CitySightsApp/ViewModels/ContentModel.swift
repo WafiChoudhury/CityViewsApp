@@ -18,37 +18,40 @@ class ContentModel: NSObject, CLLocationManagerDelegate, ObservableObject {
 
     override init(){
         
+        
+        
         super.init()
         
         locationManager.delegate = self
-    
-        //get permission from user and then geolocate them
-        locationManager.requestWhenInUseAuthorization()
+       
         
   
     }
     
-    
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+    func requestGeoLocationPermission(){
+        //get permission from user and then geolocate them
+        locationManager.requestWhenInUseAuthorization()
         
-        authorizationState = locationManager.authorizationStatus
-        if (locationManager.authorizationStatus == .authorizedAlways || locationManager.authorizationStatus == .authorizedWhenInUse){
-             
+    }
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
             
-            //we have permission!
+            // Update the authorizationState property
+            authorizationState = locationManager.authorizationStatus
             
-            //geoloacte the user after we get permission
-            locationManager.startUpdatingLocation()
-            
-            
+            if locationManager.authorizationStatus == .authorizedAlways ||
+                locationManager.authorizationStatus == .authorizedWhenInUse {
+                
+                // We have permission
+                // Start geolocating the user, after we get permission
+                locationManager.startUpdatingLocation()
             }
-            
-            
+            else if locationManager.authorizationStatus == .denied {
+                // We don't have permission
+            }
         }
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         //gives us the location of the user
-        
+
         let userLocation = locations.first
         
         if(userLocation != nil){
@@ -58,10 +61,12 @@ class ContentModel: NSObject, CLLocationManagerDelegate, ObservableObject {
             
             getBuisnesses(category: Keys.artskey, location: userLocation!)
             getBuisnesses(category: Keys.restaurantsKey, location: userLocation!)
+            print("hey")
             }
         
         
         }
+
     
     func getBuisnesses(category:String, location:CLLocation){
         
@@ -123,6 +128,7 @@ class ContentModel: NSObject, CLLocationManagerDelegate, ObservableObject {
                             }
                             else if(category == "arts"){
                                 self.arts = businesses
+                                print("hey")
                             }
                         }
                     //Assign results to properties

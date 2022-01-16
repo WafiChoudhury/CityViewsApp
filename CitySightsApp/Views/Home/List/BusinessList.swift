@@ -17,11 +17,21 @@ struct BusinessList: View {
             
             LazyVStack(alignment: .leading, pinnedViews: [.sectionHeaders]){
                 
+                
+                
                 Section(header: BusinessSectionHeader(title: "Food"))
                 {
                     
                     ForEach(model.restaraunts) { Buisness in
-                        BusinessRow(business: Buisness)
+                        
+                        NavigationLink(
+                            destination: BusinessDetail(business: Buisness),
+                            label: {
+                                BusinessRow(business: Buisness)
+                                
+                            })
+                        
+                       
 
                     
                     }
@@ -30,7 +40,13 @@ struct BusinessList: View {
                 Section(header:BusinessSectionHeader(title: "Sights"))
                 {
                     ForEach(model.arts) { Buisness in
-                       BusinessRow(business: Buisness)
+                    
+                        NavigationLink(
+                            destination: BusinessDetail(business: Buisness),
+                            label: {
+                                BusinessRow(business: Buisness)
+                            })
+                        
                     
                     }
                 }
