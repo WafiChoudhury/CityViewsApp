@@ -4,6 +4,5 @@ CityViews
 View Gizmo here!
 
 
-[![Everything Is AWESOME](https://img.youtube.com/vi/StTqXEQ2l-Y/0.jpg)](https://www.youtube.com/watch?v=StTqXEQ2l-Y "Everything Is AWESOME")
+[![HackNY](https://img.youtube.com/vi/im2LUpE3MgI/0.jpg)](https://img.youtube.com/vi/im2LUpE3MgI/0.jpg "Gizmo App")
 
-https://img.youtube.com/vi/StTqXEQ2l-Y/0.jpg
